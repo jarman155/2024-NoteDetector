@@ -15,15 +15,15 @@ from absl import logging
 logging.set_verbosity(logging.ERROR)
 
 train_data = object_detector.DataLoader.from_pascal_voc(
-    'frc2024-disc-1/train',
-    'frc2024-disc-1/train',
-    ['note']
+    'game_pieces/train',
+    'game_pieces/train',
+    ['cell']
 )
 
 val_data = object_detector.DataLoader.from_pascal_voc(
-    'frc2024-disc-1/valid',
-    'frc2024-disc-1/valid',
-    ['note']
+    'game_pieces/valid',
+    'game_pieces/valid',
+    ['cell']
 )
 
 spec = model_spec.get('efficientdet_lite0')
@@ -32,6 +32,6 @@ model = object_detector.create(train_data, model_spec=spec, batch_size=4, train_
 
 model.evaluate(val_data)
 
-model.export(export_dir='.', tflite_filename='notedetector.tflite')
+model.export(export_dir='.', tflite_filename='celldetector.tflite')
 
-model.evaluate_tflite('notedetector.tflite', val_data)
+model.evaluate_tflite('celldetector.tflite', val_data)
