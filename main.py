@@ -9,9 +9,10 @@ assert tf.__version__.startswith('2')
 tf.get_logger().setLevel('ERROR')
 from absl import logging
 logging.set_verbosity(logging.ERROR)
-
+# replace "game_pieces" in all the lines with your roboflow DataSet project name
+# replace "cell" with your object name, you can add more ojects just add ['<object>']
 train_data = object_detector.DataLoader.from_pascal_voc(
-    'game_pieces/train',
+    'game_pieces/train', 
     'game_pieces/train',
     ['cell']
 )
